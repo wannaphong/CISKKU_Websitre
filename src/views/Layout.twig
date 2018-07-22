@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% block meta %}
+  {% endblock %}
+  <title>CIS>_</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Kanit');
+    html, body {
+      font-family: 'Kanit';
+      height: 100%;
+    }
+    {% block style %}
+    {% endblock %}
+  </style> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="{{ path_for('home') }}">
+      <span class="h3 m-0">CIS>_</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li {{ (current == 'home') ? 'class="nav-item active"' : 'class="nav-item"' }}>
+          <a class="nav-link" href="{{ path_for('home') }}">ข่าวสารและกิจกรรม</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">หลักสูตรและการสอน</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">รายชื่ออาจารย์</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">รายชื่อนักศึกษา</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li {{ (current == 'signin') ? 'class="nav-item active"' : 'class="nav-item"' }}>
+          <a class="nav-link" href="#">ลงชื่อเข้าใช้งาน</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% block content %}
+  {% endblock %}
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+{% block script %}
+{% endblock %}
+</html>
