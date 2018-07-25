@@ -1,7 +1,11 @@
 {% extends "layout.twig" %}
 
+{% block style %}
+<link rel="stylesheet" href="{{ base_url() }}/css/main.css">
+{% endblock %}
+
 {% block content %}
-  <main role="main" style="margin-top: 59px;">
+  <main role="main">
     <div class="jumbotron rounded-0">
       <div class="container">
         <h1 class="display-3 d-md-block d-none">สาขาวิทยาการคอมพิวเตอร์และสารสนเทศ</h1>
@@ -36,57 +40,4 @@
       </div>
     </div>
   </main>
-  <div class="container">
-    <footer>
-      <div class="row">
-        <div class="col-12">
-          <hr>
-        </div>
-        <div class="col-12 col-md">
-          {# <img class="mb-2" src="./assets/images/cis_logo.png" alt="" width="72" height="72"> #}
-          <small class="d-block mb-3 text-muted">© 2017-2018</small>
-        </div>
-        <!-- <div class="col-6 col-md">
-          <h5>Features</h5>
-          <ul class="list-unstyled text-small">
-            <li>
-              <a class="text-muted" href="#">Cool stuff</a>
-            </li>
-            <li>
-              <a class="text-muted" href="#">Random feature</a>
-            </li>
-            <li>
-              <a class="text-muted" href="#">Team feature</a>
-            </li>
-            <li>
-              <a class="text-muted" href="#">Stuff for developers</a>
-            </li>
-            <li>
-              <a class="text-muted" href="#">Another one</a>
-            </li>
-            <li>
-              <a class="text-muted" href="#">Last time</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>About</h5>
-          <ul class="list-unstyled text-small">
-            <li>
-              <a class="text-muted" href="#">Team</a>
-            </li>
-            <li>
-              <a class="text-muted" href="#">Locations</a>
-            </li>
-            <li>
-              <a class="text-muted" href="#">Privacy</a>
-            </li>
-            <li>
-              <a class="text-muted" href="#">Terms</a>
-            </li>
-          </ul>
-        </div> -->
-      </div>
-    </footer>
-  </div>
 {% endblock %}

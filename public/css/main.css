@@ -1,0 +1,27 @@
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+@import url("../node_modules/@fortawesome/fontawesome-free/css/all.css");
+@font-face {
+  src: url("../assets/fonts/Kanit-Regular.ttf");
+  font-family: "Kanit";
+}
+
+body {
+  font-family: "Kanit";
+  height: 100%;
+}
+
+main {
+  margin-top: 59px;
+}
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}
+
+.news-img {
+  max-height: 180px;
+  width: auto;
+  height: auto;
+}

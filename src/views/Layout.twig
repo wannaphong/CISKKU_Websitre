@@ -4,20 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  {% block meta %}
-  {% endblock %}
+  <meta name="google-signin-client_id" content="681596273797-uf09tipgtrdug7n7312snc4vb2u73qkq.apps.googleusercontent.com">
   <title>CIS>_</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Kanit');
-    html, body {
-      font-family: 'Kanit';
-      height: 100%;
-    }
-    {% block style %}
-    {% endblock %}
-  </style> 
+  <link rel="shortcut icon" type="image/x-icon" href="{{ base_url() }} /assets/images/cis_logo.png" />
+  {% block style %}
+  {% endblock %}
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -30,7 +21,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li {{ (current == 'home') ? 'class="nav-item active"' : 'class="nav-item"' }}>
+        <li class="nav-item {{ (current == 'home') ? 'active' : '' }}">
           <a class="nav-link" href="{{ path_for('home') }}">ข่าวสารและกิจกรรม</a>
         </li>
         <li class="nav-item">
@@ -44,18 +35,101 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li {{ (current == 'signin') ? 'class="nav-item active"' : 'class="nav-item"' }}>
-          <a class="nav-link" href="#">ลงชื่อเข้าใช้งาน</a>
+        {% if (signin) and (signin != "") %}
+        <li class="nav-item {{ (current == 'profile') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ path_for('profile',{ id:signin }) }}">โปรไฟล์</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="signOut()">ออกจากระบบ</a>
+        </li>
+        {% else %}
+        <li class="nav-item {{ (current == 'signin') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ path_for('signin') }}">ลงชื่อเข้าใช้งาน</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
   {% block content %}
   {% endblock %}
+  {% if current != 'signin' %}
+  <div class="container">
+    <footer>
+      <div class="row">
+        <div class="col-12">
+          <hr>
+        </div>
+        <div class="col-12 col-md">
+          <img class="mb-2" src="{{ base_url() }} /assets/images/cis_logo.png" alt="" width="72" height="72">
+          <small class="d-block mb-3 text-muted">© 2017-2018</small>
+        </div>
+        <!-- <div class="col-6 col-md">
+          <h5>Features</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="text-muted" href="#">Cool stuff</a>
+            </li>
+            <li>
+              <a class="text-muted" href="#">Random feature</a>
+            </li>
+            <li>
+              <a class="text-muted" href="#">Team feature</a>
+            </li>
+            <li>
+              <a class="text-muted" href="#">Stuff for developers</a>
+            </li>
+            <li>
+              <a class="text-muted" href="#">Another one</a>
+            </li>
+            <li>
+              <a class="text-muted" href="#">Last time</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li>
+              <a class="text-muted" href="#">Team</a>
+            </li>
+            <li>
+              <a class="text-muted" href="#">Locations</a>
+            </li>
+            <li>
+              <a class="text-muted" href="#">Privacy</a>
+            </li>
+            <li>
+              <a class="text-muted" href="#">Terms</a>
+            </li>
+          </ul>
+        </div> -->
+      </div>
+    </footer>
+  </div>
+  {% endif %}
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script src="{{ base_url() }} /node_modules/jquery/dist/jquery.min.js"></script>
+<script src="{{ base_url() }} /node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="{{ base_url() }} /node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<script>
+  function onLoad() {
+    gapi.load('auth2', function() {
+      gapi.auth2.init();
+    });
+  }
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut();
+    $.ajax({
+      url: '{{ path_for('signout') }}',
+      type: 'POST',
+      success: () => {
+        window.location.href = "{{ path_for('home') }}"
+      }
+    });
+  }
+</script>
 {% block script %}
 {% endblock %}
 </html>

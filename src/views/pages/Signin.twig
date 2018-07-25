@@ -1,0 +1,42 @@
+{% extends "layout.twig" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ base_url() }}/css/signin.css">
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-md-8 d-md-block d-none" style="background-image: url(https://cdn-images-1.medium.com/max/1600/1*iFN_PWPWs6TQ9JzDp2v9Wg.jpeg);">
+      </div>
+      <div class="col-md-4 col-12 d-flex justify-content-center align-items-center h-100 text-center">
+        <div class="row">
+          <div class="col-12">
+            <h2>ลงชื่อเข้าใช้งาน</h2>
+          </div>
+          <div class="g-signin2 col-12 my-3" data-onsuccess="onSignIn"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+<script>
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var data = JSON.parse(`{"google_user_id": "${profile.getId()}",
+                            "full_name": "${profile.getGivenName()} ${profile.getFamilyName()}",
+                            "email": "${profile.getEmail()}"
+                          }`);
+    $.ajax({
+      url: '{{ path_for('signin') }}',
+      data: data,
+      type: 'post',
+      success: () => {
+        window.location.href = '{{ path_for('home') }}'
+      }
+    })
+  }
+</script>
+{% endblock %}

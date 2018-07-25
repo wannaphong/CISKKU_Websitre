@@ -1,0 +1,131 @@
+{% extends "layout.twig" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ base_url() }}/css/profile.css">
+{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="container">
+      <div class="row pt-3">
+        <div class="col-md-4 mb-3">
+          <div class="row m-0">
+            <div class="col-12 d-flex justify-content-center justify-content-md-end p-0">
+              <div id="profile_pic" class="profile_picture" style="background-image: url({{ base_url() }}{{ profilePic ? '/uploads/' ~ profilePic : '/assets/images/profile.jpg' }});"></div>
+            </div>
+            <div class="col-12 text-md-right text-center p-0">
+              <small class="form-text text-muted">คลิกที่รูปภาพเพื่ออัปโหลดรูปประจำตัว</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <ul class="nav nav-tabs mb-2">
+            <li class="nav-item">
+              <a class="nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="profile" aria-expanded="true">ข้อมูลส่วนตัว</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav-school-tab" data-toggle="tab" href="#nav-school" role="tab" aria-controls="school" aria-expanded="true">ความคิดเห็น</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" aria-expanded="true">
+              <form class="row mx-0" action="{{ path_for('profile', { id:id }) }}" method="post">
+                <div class="col-md-3 pb-0 pb-md-2">
+                  <label for="fullName">ชื่อ - นามสกุล : </label>
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2">
+                  <input type="text" class="form-control" id="fullName" name="fullName" aria-describedby="fullNameHelp" value="{{ fullName }}">
+                  <small id="fullNameHelp" class="form-text text-muted">ภาษาไทยหรือภาษาอังกฤษก็ได้</small>
+                </div>
+                <div class="col-md-3 pb-0 pb-md-2">
+                  <label for="generation">รุ่นที่ : </label>
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2">
+                  <input type="number" class="form-control" id="generation" name="generation" aria-describedby="generationHelp" value="{{ generation|e }}">
+                  <small id="generationHelp" class="form-text text-muted">ปีที่เข้าศึกษา</small>
+                </div>
+                <div class="col-md-3 pb-0 pb-md-2">
+                  <label for="email">E-mail : </label>
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2">
+                  <p>{{ email }}</p>
+                </div>
+                <div class="col-md-3 pb-0 pb-md-2">
+                  <label for="facebook">Facebook : </label>
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">http://www.facebook.com/</span>
+                    </div>
+                    <input type="text" class="form-control" id="facebook" name="facebook" value="{{ facebook|e }}">
+                  </div>
+                  <small id="facebookHelp" class="form-text text-muted">ใส่ชื่อผู้ใช้ facebook ของคุณ</small>
+                </div>
+                <div class="col-md-3 pb-0 pb-md-2">
+                  <label for="highSchool">จบจากโรงเรียน : </label>
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2">
+                  <input type="text" class="form-control" id="highSchool" name="highSchool" value="{{ highSchool|e }}">
+                </div>
+                <div class="col-md-3 pb-0 pb-md-2">
+                  <label for="province">จังหวัด : </label>
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2">
+                  <input type="text" class="form-control" id="province" name="province" value="{{ province|e }}">
+                </div>
+                <div class="col-md-3 pb-0 pb-md-2">
+                  <label for="workPosition">ตำแหน่งงานปัจจุบัน : </label>
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2">
+                  <input type="text" class="form-control" id="workPosition" name="workPosition" value="{{ workPosition|e }}">
+                </div>
+                <div class="col-md-3 pb-0 pb-md-2">
+                  <label for="companyName">บริษัท : </label>
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2">
+                  <input type="text" class="form-control" id="companyName" name="companyName" value="{{ companyName|e }}">
+                </div>
+                <div class="col-12 p-0">
+                  <hr>
+                </div>
+                <div class="col-12 p-0">
+                  <button class="btn w-100" type="submit">บันทึกการเปลี่ยนแปลง</button>
+                </div>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="nav-school" role="tabpanel" aria-labelledby="nav-school-tab" aria-expanded="false">
+              <form class="row" action="{{ path_for('profile.comment') }}" method="post">
+                <div class="form-group col-12 mt-2">
+                  <label for="comments">ความคิดเห็นเกี่ยวกับสาขาวิทยาการคอมพิวเตอร์และสารสนเทศ มหาวิทยาลัยขอนแก่น</label>
+                  <textarea class="form-control" id="comments" name="comments" rows="5">{{ comment }}</textarea>
+                </div>
+                <div class="col-12">
+                  <hr>
+                </div>
+                <div class="col-12">
+                  <button class="btn w-100" type="submit">บันทึกความคิดเห็น</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <form action="{{ path_for('profile.pic') }}" method="post" style="display:none" id="upload_pic_form" enctype="multipart/form-data">
+    <input type="file" name="{{ id }}__picture" accept=".jpg,.png" id="profilePic">
+  </form>
+{% endblock %}
+
+{% block script %}
+<script>
+  $('#profile_pic').click(()=>{
+    $('#profilePic').click();
+  });
+
+  $('#profilePic').change(()=>{
+    $('#upload_pic_form').submit();
+  });
+</script>
+{% endblock %}

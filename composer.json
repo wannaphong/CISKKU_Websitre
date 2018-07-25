@@ -1,11 +1,10 @@
 {
-    "name": "CISKKU_Websitre",
+    "name": "aveta/lamp_stack_with_slim",
     "license": "ISC",
     "authors": [
         {
             "name": "Aveta Vos",
-            "email": "avetavos@hotmail.com",
-            "role": "Developer"
+            "email": "avetavos@hotmail.com"
         }
     ],
     "minimum-stability": "stable",
@@ -13,7 +12,8 @@
         "slim/slim": "^3.10",
         "slim/twig-view": "2.1",
         "facebook/graph-sdk": "^5.6",
-        "google/apiclient": "2.0"
+        "google/apiclient": "2.0",
+        "illuminate/database": "^5.6"
     },
     "autoload": {
         "psr-4": {

@@ -1,0 +1,32 @@
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+@import url("../node_modules/@fortawesome/fontawesome-free/css/all.css");
+@font-face {
+  src: url("../assets/fonts/Kanit-Regular.ttf");
+  font-family: "Kanit";
+}
+
+body {
+  font-family: "Kanit";
+  height: 100%;
+}
+
+main {
+  margin-top: 59px;
+  min-height: 550px;
+}
+
+form .col-md-3,
+form .col-md-9 {
+  padding: 10px 0;
+}
+
+.profile_picture {
+  width: 244px;
+  height: 244px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

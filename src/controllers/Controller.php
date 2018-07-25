@@ -4,13 +4,16 @@ namespace App\Controllers;
 use Psr\Http\Message\ResponseInterface;
 
 class Controller {
+  
   private $container;
 
   public function __construct ($container) {
     $this->container = $container;
   }
 
-  public function render (ResponseInterface $response, $file, $args) {
-    $this->container->view->render($response, $file, $args);
+  public function __get ($property) {
+    if ($this->container->{$property}) {
+      return $this->container->{$property};
+    }
   }
 }

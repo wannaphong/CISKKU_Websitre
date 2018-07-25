@@ -1,0 +1,16 @@
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+@import url('../node_modules/@fortawesome/fontawesome-free/css/all.css');
+@font-face {
+  src: url('../assets/fonts/Kanit-Regular.ttf');
+  font-family: 'Kanit';
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Kanit';
+}
+
+.abcRioButton {
+  width: 100% !important;
+}
