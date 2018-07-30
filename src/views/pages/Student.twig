@@ -1,0 +1,29 @@
+{% extends "layout.twig" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ base_url() }}/css/list.css">
+{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h3 class="mt-3">นักศึกษารุ่นปี 25{{ year }}</h3>
+          <hr>
+        </div>
+        {% for student in studentList %}
+        <div class="col-md-3 col-12 px-5 px-md-2 py-md-0 py-4">
+          <div id="profile_pic" class="profile_picture mx-auto" style="background-image: url({{ base_url() }}{{ student.profile_pic ? '/uploads/profile_pic/' ~ student.profile_pic : '/assets/images/profile.jpg' }});"></div>
+          <a href="{{ path_for('profile',{ id:student.google_user_id }) }}"><h4 class="mt-2">{{ student.full_name }}</h4></a>
+          {% if student.public_position == "1" and student.company_name != '' %}
+          <p class="m-0">{{ student.work_position }} @{{ student.company_name }}</p>
+          {% elseif student.public_position == "1" and student.company_name == '' %}
+          <p class="m-0">{{ student.work_position }}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </di>
+    </div>
+  </main>
+{% endblock %}

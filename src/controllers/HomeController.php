@@ -35,11 +35,20 @@ class HomeController extends Controller {
         array_push($resEvent, $resTemp);
       }
     }
+    $query =  $this->db->table('profile_tbl')
+                        ->join('comment_tbl', 'comment_tbl.user_id', '=', 'profile_tbl.google_user_id')
+                        ->where('comment_tbl.comment_text', '!=', '')
+                        ->where('profile_tbl.work_position', '!=', '')
+                        ->orderByRaw("RAND()")
+                        ->limit(5)
+                        ->get();
+    $comment = json_decode($query, true);
     $this->view->render($response, 'pages/Home.twig', [
       'resNews' => $resNews,
       'resEvent' => $resEvent,
+      'resComment' => $comment,
       'current' => 'home',
-      'signin' => $_SESSION["uid"]
+      'signin' => (isset($_SESSION["uid"]) ? $_SESSION["uid"] : false)
     ]);
   }
 
@@ -63,7 +72,7 @@ class HomeController extends Controller {
     $this->view->render($response, 'pages/News.twig', [
       'resNews' => $resNews,
       'current' => 'news',
-      'signin' => $_SESSION["uid"]
+      'signin' => (isset($_SESSION["uid"]) ? $_SESSION["uid"] : false)
     ]);
   }
 
@@ -87,7 +96,7 @@ class HomeController extends Controller {
     $this->view->render($response, 'pages/Event.twig', [
       'resEvent' => $resEvent,
       'current' => 'event',
-      'signin' => $_SESSION["uid"]
+      'signin' => (isset($_SESSION["uid"]) ? $_SESSION["uid"] : false)
     ]);
   }
 }

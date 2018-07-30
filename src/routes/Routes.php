@@ -13,4 +13,9 @@ $app->post('/profile/{id}', \App\Controllers\ProfileController::class . ':update
 $app->post('/uploadpic', \App\Controllers\ProfileController::class . ':uploadPicture')->setName('profile.pic');
 $app->post('/commemt', \App\Controllers\ProfileController::class . ':updateComment')->setName('profile.comment'); 
 
-// $app->post('/comment/{id}'), );
+$app->get('/course', \App\Controllers\CourseController::class . ':viewCourse')->setName('course.view'); 
+$app->post('/upload_course', \App\Controllers\CourseController::class . ':uploadCourse')->setName('course.upload');
+
+$app->get('/teachers', \App\Controllers\ListController::class . ':teacherList')->setName('teachers'); 
+$app->get('/students', \App\Controllers\ListController::class . ':studentList')->setName('students'); 
+$app->get('/student/{year}', \App\Controllers\ListController::class . ':student')->setName('student'); 

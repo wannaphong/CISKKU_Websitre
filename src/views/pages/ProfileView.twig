@@ -1,0 +1,49 @@
+{% extends "layout.twig" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ base_url() }}/css/profile.css">
+{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="container">
+      <div class="row pt-3">
+        <div class="col-md-4 mb-3">
+          <div class="row m-0">
+            <div class="col-12 d-flex justify-content-center justify-content-md-end p-0">
+              <div id="profile_pic" class="profile_picture" style="background-image: url({{ base_url() }}{{ profilePic ? '/uploads/profile_pic/' ~ profilePic : '/assets/images/profile.jpg' }});"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <h2>{{ fullName }}</h2>
+          <h5 class="text-primary">รุ่นที่ : {{ generation }}</h5>
+          <hr>
+          <p>E-Mail : {{ email }}</p>
+          <p>Facebook : {{ facebook }}</p>
+          <p>จบจากโรงเรียน : {{ highSchool }}</p>
+          <p>จังหวัด : {{ province }}</p>
+          {% if public == "1" %}
+          <p>ตำแหน่งงานปัจจุบัน : {{ workPosition }}</p>
+          <p>บริษัท : {{ companyName }}</p>
+          {% endif %}
+          <h5 class="text-primary mt-5">ความคิดเห็นเกี่ยวกับสาขาวิทยาการคอมพิวเตอร์และสารสนเทศ</h5>
+          <hr>
+          <p>{{ comment }}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+<script>
+  $('#profile_pic').click(()=>{
+    $('#profilePic').click();
+  });
+
+  $('#profilePic').change(()=>{
+    $('#upload_pic_form').submit();
+  });
+</script>
+{% endblock %}

@@ -9,6 +9,12 @@
   font-family: "Kanit Light";
 }
 
+html,
+body {
+  height: 100%;
+  font-family: "Kanit";
+}
+
 .navbar-brand {
   font-family: "Kanit Light";
   line-height: 12px;
@@ -17,11 +23,6 @@
 .navbar-brand small {
   display: block;
   font-size: 14px;
-}
-
-body {
-  font-family: "Kanit";
-  height: 100%;
 }
 
 nav {
@@ -34,35 +35,4 @@ main {
 
 .shadow-sm {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-
-.card {
-  margin: 0 auto;
-  float: none;
-  margin-bottom: 10px;
-}
-
-.news-img {
-  max-height: 180px;
-  width: auto;
-  height: auto;
-}
-
-.profile_picture {
-  width: 150px;
-  height: 150px;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.comment-block:nth-child(even) {
-  background-color: rgb(241, 241, 241);
-}
-
-p {
-  word-break: break-all;
 }

@@ -1,0 +1,55 @@
+{% extends "layout.twig" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ base_url() }}/css/main.css">
+{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mt-3">
+          <h2>หลักสูตรและการสอนของสาขาวิทยาการคอมพิวเตอร์และสารสนเทศ</h2>
+          <hr>
+        </div>
+        {% if (admin) %}
+        <div class="col-12">
+          <form action="{{ path_for('course.upload') }}" method="post" enctype="multipart/form-data" class="row m-0">
+            <div class="form-group col-md-6 mb-0">
+              <label for="inputPDF">เลือกไฟล์ PDF เพื่ออัพเดตข้อมูลหลักสูตร</label>
+              <input type="file" class="form-control-file" id="inputPDF" name="newPDF" accept=".pdf" >
+              <small id="generationHelp" class="form-text text-danger">ไม่เกิน 8 เมกะไบต์</small>
+            </div>
+            <div class="col-md-6 d-flex justify-content-md-end justify-content-center">
+              <button type="submit" class="btn" disabled="disabled" accept="image/*" id="form_submit">อัพโหลด</button>
+            </div>
+          </form>
+          <hr>
+        </div>
+        {% endif %}
+        <div class="col-12 py-3 d-md-block d-none">
+          <embed src="uploads/course_pdf/{{ file }}" width="100%" height="700px" />
+        </div>
+        <div class="col-12 text-center d-md-none d-block">
+          <p>เว็บเบราเซอร์ของคุณไม่รองรับการเปิดไฟล์ PDF</p>
+          <a href="uploads/course_pdf/asdsdfsdf.pdf">คลิกที่นี้เพื่อดาวน์โหลดไฟล์</a>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function() {
+  $('#inputPDF').change(function() {
+    var fsize = $('#inputPDF')[0].files[0].size;
+    if (($(this).val() != null && $(this).val() !== "") && fsize < 8388608) {
+      $('#form_submit').attr('disabled', false);
+    } else {
+      $('#form_submit').attr('disabled', true);
+    }
+  });
+});
+</script>
+{% endblock %}

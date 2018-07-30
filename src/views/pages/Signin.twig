@@ -25,10 +25,11 @@
 <script>
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    var data = JSON.parse(`{"google_user_id": "${profile.getId()}",
-                            "full_name": "${profile.getGivenName()} ${profile.getFamilyName()}",
-                            "email": "${profile.getEmail()}"
-                          }`);
+    var data = {};
+    data.google_user_id = profile.getId();
+    data.full_name = profile.getGivenName() + " " + profile.getFamilyName();
+    data.email = profile.getEmail();
+    sessionStorage.setItem('data',JSON.stringify(data));
     $.ajax({
       url: '{{ path_for('signin') }}',
       data: data,

@@ -1,0 +1,25 @@
+{% extends "layout.twig" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ base_url() }}/css/list.css">
+{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h3 class="mt-3">อาจารย์ประจำสาขา</h3>
+          <hr>
+        </div>
+        {% for teachers in teachersList %}
+        <div class="col-md-3 col-12 px-5 px-md-0 py-md-0 py-4">
+          <div id="profile_pic" class="profile_picture mx-auto" style="background-image: url({{ base_url() }}{{ teachers.profile_pic ? '/uploads/profile_pic/' ~ teachers.profile_pic : '/assets/images/profile.jpg' }});"></div>
+          <a href="{{ path_for('profile',{ id:teachers.google_user_id }) }}"><h4 class="mt-2">{{ teachers.full_name }}</h4></a>
+          <p>{{ teachers.work_position }}</p>
+        </div>
+        {% endfor %}
+      </di>
+    </div>
+  </main>
+{% endblock %}

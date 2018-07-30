@@ -26,7 +26,7 @@
           <hr>
         </div>
         {% for news in resNews %}
-          <div class="col-md-4 p-2">
+          <div class="col-md-4">
             {% if news['full_picture'] %}
               <img src="{{ news['full_picture'] }}" alt="news images" class="mx-auto d-block rounded my-3 news-img">
             {% else %}
@@ -65,6 +65,42 @@
               </div>
             </div>
           </div>
+        {% endfor %}
+      </div>
+      <div class="row mt-5">
+        <div class="col-12">
+          <h3>
+            <i class="far fa-comment-alt"></i> ความคิดเห็น
+          </h3>
+        </div>
+        <div class="col-12">
+          <hr>
+        </div>
+        {% for comment in resComment %}
+        <div class="col-12 comment-block my-2 p-3">
+          <div class="row m-0">
+            <div class="col-md-3 d-flex justify-content-center p-0">
+            {% if (comment.profile_pic) %}
+              <div id="profile_pic" class="profile_picture" style="background-image: url({{ base_url() }}/uploads/profile_pic/{{ comment.profile_pic }});"></div>
+            {% else %}
+              <div id="profile_pic" class="profile_picture" style="background-image: url({{ base_url() }}/assets/images/profile.jpg);"></div>
+            {% endif %}
+            </div>
+            <div class="col-md-9">
+              <a href="{{ path_for('profile',{ id:comment.google_user_id }) }}"><h4 class="m-md-0 mt-2">{{ comment.full_name }}</h4></a>
+              {% if comment.generation != '' %}
+              <p class="font-weight-bold m-0">นักศึกษารุ่นที่ : {{ comment.generation }}</p>
+              {% endif %}
+              {% if comment.public_position == "1" and comment.company_name != '' %}
+              <p class="m-0">{{ comment.work_position }} @{{ comment.company_name }}</p>
+              {% elseif comment.public_position == "1" and comment.company_name == '' %}
+              <p class="m-0">{{ comment.work_position }}</p>
+              {% endif %}
+              <hr>
+              <p>{{ comment.comment_text }}</p>
+            </div>
+          </div> 
+        </div>
         {% endfor %}
       </div>
     </div>

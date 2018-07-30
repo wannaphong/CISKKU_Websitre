@@ -4,15 +4,36 @@
   src: url("../assets/fonts/Kanit-Regular.ttf");
   font-family: "Kanit";
 }
+@font-face {
+  src: url("../assets/fonts/Kanit-ExtraLight.ttf");
+  font-family: "Kanit Light";
+}
 
 body {
   font-family: "Kanit";
   height: 100%;
 }
 
+.navbar-brand {
+  font-family: "Kanit Light";
+  line-height: 12px;
+}
+
+.navbar-brand small {
+  display: block;
+  font-size: 14px;
+}
+
+nav {
+  background-color: rgb(255, 255, 255);
+}
+
 main {
-  margin-top: 59px;
-  min-height: 550px;
+  margin-top: 76px;
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
 form .col-md-3,
@@ -29,4 +50,8 @@ form .col-md-9 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+p {
+  word-break: break-all;
 }

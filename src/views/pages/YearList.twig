@@ -1,0 +1,25 @@
+{% extends "layout.twig" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ base_url() }}/css/list.css">
+{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h3 class="mt-3">นักศึกษาภายในสาขา</h3>
+          <hr>
+        </div>
+        <div class="col-12">
+          <ul class="list-group">
+          {% for generation in generationList %}
+            <li class="list-group-item border-0"><a href="{{ path_for('student',{ year:generation.generation }) }}"><i class="fas fa-graduation-cap"></i> รุ่นปี 25{{ generation.generation }}</a></li>
+          {% endfor %}
+          </ul>
+        </div>
+      </di>
+    </div>
+  </main>
+{% endblock %}

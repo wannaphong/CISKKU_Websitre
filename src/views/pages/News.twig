@@ -6,13 +6,6 @@
 
 {% block content %}
   <main role="main">
-    <div class="jumbotron rounded-0">
-      <div class="container">
-        <h1 class="display-3 d-md-block d-none">สาขาวิทยาการคอมพิวเตอร์และสารสนเทศ</h1>
-        <h1 class="display-5 d-md-none d-block">สาขาวิทยาการคอมพิวเตอร์และสารสนเทศ</h1>
-      </div>
-    </div>
-
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -30,7 +23,7 @@
             <img src="{{ base_url() }} /assets/images/megaphone.png" alt="news images" class="mx-auto d-block rounded my-3 news-img">
             {% endif %}
             <span class="badge badge-dark">โพสต์เมื่อ : {{ news['created_time']['date']|slice(0, 19) }}</span>
-            <p>{{ news['message']|slice(0, 150) }} . . .</p>
+            <p>{{ news['message'] ? news['message']|slice(0, 150) ~ ' . . .' : ''}}</p>
             <p>
               <a class="btn btn-secondary" href="{{ news['link'] }}" target="_blank" role="button">อ่านเพิ่มเติม »</a>
             </p>

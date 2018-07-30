@@ -31,6 +31,6 @@ class SigninController extends Controller {
   }
 
   public function signout (RequestInterface $request, ResponseInterface $response) {
-    $_SESSION["uid"] = "";
+    unset($_SESSION["uid"]);
   }
 }
