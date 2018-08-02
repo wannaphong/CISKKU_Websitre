@@ -49,7 +49,7 @@
                   <label for="email">E-Mail : </label>
                 </div>
                 <div class="col-md-9 pt-0 pt-md-2">
-                  <p>{{ email }}</p>
+                  <p class="m-0 mb-md-3">{{ email }}</p>
                 </div>
                 <div class="col-md-3 pb-0 pb-md-2">
                   <label for="facebook">Facebook : </label>
@@ -80,20 +80,20 @@
                 </div>
                 <div class="col-md-9 pt-0 pt-md-2">
                   <input type="text" class="form-control" id="workPosition" name="workPosition" value="{{ workPosition|e }}">
-                  <div class="form-group form-check m-0">
-                    {% if public == "" or public == 0 %}
-                    <input type="checkbox" class="form-check-input" id="public_position" name="public_position">
-                    {% else %}
-                    <input type="checkbox" class="form-check-input" id="public_position" name="public_position" checked>
-                    {% endif %}
-                    <label class="form-check-label" for="public_position" style="font-size: 80%;font-weight: 400;">แสดงตำแหน่งงานปัจจุบันเป็นสาธารณะ</label>
-                  </div>  
                 </div>
                 <div class="col-md-3 pb-0 pb-md-2">
                   <label for="companyName">บริษัท : </label>
                 </div>
                 <div class="col-md-9 pt-0 pt-md-2">
                   <input type="text" class="form-control" id="companyName" name="companyName" value="{{ companyName|e }}">
+                </div>
+                <div class="col-md-9 pt-0 pt-md-2 px-3 form-check">
+                  {% if public == "" or public == 0 %}
+                  <input type="checkbox" class="form-check-input" id="public_profile" name="public_profile">
+                  {% else %}
+                  <input type="checkbox" class="form-check-input" id="public_profile" name="public_profile" checked>
+                  {% endif %}
+                  <label class="form-check-label" for="public_profile">เผยแพร่โปรไฟล์ของคุณเป็นสาธารณะ</label>
                 </div>
                 <div class="col-12 p-0">
                   <hr>

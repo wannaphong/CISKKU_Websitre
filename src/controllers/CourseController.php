@@ -13,11 +13,12 @@ class CourseController extends Controller {
     $dir    = './uploads/course_pdf/';
     $file = scandir($dir);
     if (isset($_SESSION["uid"])) {
-      $query =  $this->db->table('profile_tbl')->where('google_user_id', '=', $_SESSION['uid'])->pluck('email');
+      $query =  $this->db->table('cisw_profile_tbl')->where('google_user_id', '=', $_SESSION['uid'])->pluck('email');
       if (strpos($query[0], '@kku.ac.th')) {
         $this->view->render($response, 'pages/CourseView.twig', [
           'current' => 'course',
           'signin' => (isset($_SESSION["uid"]) ? $_SESSION["uid"] : false),
+          'teacher' => true,
           'admin' => true,
           'file' => $file[2]
         ]);
@@ -28,7 +29,6 @@ class CourseController extends Controller {
           'file' => $file[2]
         ]);
       }
-
     } else {
       $this->view->render($response, 'pages/CourseView.twig', [
         'current' => 'course',

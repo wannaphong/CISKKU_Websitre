@@ -16,17 +16,21 @@
           <hr>
         </div>
         {% for news in resNews %}
-          <div class="col-md-4 p-2">
-            {% if news['full_picture'] %}
-            <img src="{{ news['full_picture'] }}" alt="news images" class="mx-auto d-block rounded my-3 news-img">
-            {% else %}
-            <img src="{{ base_url() }} /assets/images/megaphone.png" alt="news images" class="mx-auto d-block rounded my-3 news-img">
-            {% endif %}
-            <span class="badge badge-dark">โพสต์เมื่อ : {{ news['created_time']['date']|slice(0, 19) }}</span>
-            <p>{{ news['message'] ? news['message']|slice(0, 150) ~ ' . . .' : ''}}</p>
-            <p>
-              <a class="btn btn-secondary" href="{{ news['link'] }}" target="_blank" role="button">อ่านเพิ่มเติม »</a>
-            </p>
+          <div class="col-md-3">
+            <div class="card shadow-card">
+              {% if news['full_picture'] %}
+              <img src="{{ news['full_picture'] }}" alt="news images" class="card-img-top">
+              {% else %}
+              <img src="{{ base_url() }} /assets/images/megaphone.png" alt="news images" class="card-img-top">
+              {% endif %}
+              <div class="card-body">
+                <span class="badge badge-dark">โพสต์เมื่อ : {{ news['created_time']['date']|slice(0, 19) }}</span>
+                <p>{{ news['message']|slice(0, 150) }} . . .</p>
+                <p>
+                  <a class="btn btn-secondary" href="{{ news['link'] }}" target="_blank" role="button">อ่านเพิ่มเติม »</a>
+                </p>
+              </div>
+            </div>
           </div>
         {% endfor %}
       </div>

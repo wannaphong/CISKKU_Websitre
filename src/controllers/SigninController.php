@@ -16,14 +16,14 @@ class SigninController extends Controller {
     $google_user_id = $request->getParam('google_user_id');
     $full_name = $request->getParam('full_name');
     $email = $request->getParam('email');
-    $exists =  $this->db->table('profile_tbl')->where('google_user_id', '=', $google_user_id)->exists();
+    $exists =  $this->db->table('cisw_profile_tbl')->where('google_user_id', '=', $google_user_id)->exists();
     if(!$exists) {
-      $query = $this->db->table('profile_tbl')->insert([
+      $query = $this->db->table('cisw_profile_tbl')->insert([
         'google_user_id' => $google_user_id,
         'full_name' => $full_name,
         'email' => $email
       ]);
-      $query = $this->db->table('comment_tbl')->insert([
+      $query = $this->db->table('cisw_comment_tbl')->insert([
         'user_id' => $google_user_id,
       ]);
     }

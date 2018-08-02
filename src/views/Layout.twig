@@ -60,7 +60,9 @@
           <h5>เกี่ยวกับสาขา</h5>
           <ul class="list-unstyled text-small">
             <li><a class="text-muted" href="{{ path_for('teachers') }}">อาจารย์ประจำสาขา</a></li>
+            {% if (teacher) %}
             <li><a class="text-muted" href="{{ path_for('students') }}">นักศึกษาภายในสาขา</a></li>
+            {% endif %}
             <li><a class="text-muted" href="#">ติดต่อสอบถาม</a></li>
           </ul>
         </div>

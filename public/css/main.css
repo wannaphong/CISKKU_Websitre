@@ -42,12 +42,6 @@ main {
   margin-bottom: 10px;
 }
 
-.news-img {
-  max-height: 180px;
-  width: auto;
-  height: auto;
-}
-
 .profile_picture {
   width: 150px;
   height: 150px;
@@ -65,4 +59,8 @@ main {
 
 p {
   word-break: break-all;
+}
+
+.shadow-card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
